@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
+import { useAccount } from 'wagmi'
 import { Leaf, CheckCircle, FileText, Award, ExternalLink } from 'lucide-react'
-import { CONTRACT_ADDRESSES, GREEN_TOKEN_ABI } from '../contracts'
 
 export default function Retirement() {
-  const { address, isConnected } = useAccount()
+  const { isConnected } = useAccount()
   const [creditId, setCreditId] = useState('')
   const [amount, setAmount] = useState('')
   const [message, setMessage] = useState('')

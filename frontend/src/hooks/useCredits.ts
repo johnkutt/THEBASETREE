@@ -1,20 +1,26 @@
-import { useContractRead, useContractWrite } from 'wagmi';
-import { GREEN_TOKEN_ABI, GREEN_TOKEN_ADDRESS } from '../contracts';
+import { useReadContract, useWriteContract } from 'wagmi';
+import { GREEN_TOKEN_ABI, CONTRACT_ADDRESSES } from '../contracts';
+
+const GREEN_TOKEN_ADDRESS = CONTRACT_ADDRESSES.hardhat.greenToken as `0x${string}`;
 
 export function useCredits(account: string | undefined) {
-  const { data: balance } = useContractRead({
+  const { data: balance } = useReadContract({
     address: GREEN_TOKEN_ADDRESS,
     abi: GREEN_TOKEN_ABI,
     functionName: 'balanceOf',
-    args: account ? [account] : undefined,
-    enabled: !!account,
+    args: account ? [account as `0x${string}`] : undefined,
+    query: { enabled: !!account },
   });
 
-  const { write: retire } = useContractWrite({
-    address: GREEN_TOKEN_ADDRESS,
-    abi: GREEN_TOKEN_ABI,
-    functionName: 'retire',
-  });
+  const { writeContract: retire } = useWriteContract();
 
-  return { balance, retire };
+  const retireCredits = (creditId: bigint, amount: bigint, proofURI: string) =>
+    retire({
+      address: GREEN_TOKEN_ADDRESS,
+      abi: GREEN_TOKEN_ABI,
+      functionName: 'retire',
+      args: [creditId, amount, proofURI],
+    });
+
+  return { balance, retire: retireCredits };
 }

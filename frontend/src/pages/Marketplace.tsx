@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
-import { formatUnits, parseUnits } from 'viem'
+import { useAccount, useReadContract } from 'wagmi'
 import { Search, Filter, ShoppingCart, Leaf, MapPin, Calendar, Tag } from 'lucide-react'
-import { CONTRACT_ADDRESSES, GREEN_TOKEN_ABI, MARKETPLACE_ABI } from '../contracts'
+import { CONTRACT_ADDRESSES, MARKETPLACE_ABI } from '../contracts'
 
 interface Listing {
   id: number
@@ -102,11 +101,10 @@ function ListingCard({ listing, metadata, onBuy }: {
 }
 
 export default function Marketplace() {
-  const { address, isConnected } = useAccount()
+  const { isConnected } = useAccount()
   const [searchQuery, setSearchQuery] = useState('')
   const [filterRegistry, setFilterRegistry] = useState('all')
-  const [activeListings, setActiveListings] = useState<Listing[]>([])
-  
+
   const { data: allListingsData } = useReadContract({
     address: CONTRACT_ADDRESSES.hardhat.marketplace as `0x${string}`,
     abi: MARKETPLACE_ABI,
@@ -114,26 +112,8 @@ export default function Marketplace() {
   })
 
   useEffect(() => {
-    if (allListingsData && Array.isArray(allListingsData)) {
-      const fetchListings = async () => {
-        const listings: Listing[] = []
-        for (const id of allListingsData) {
-          try {
-            // Would need actual contract call here
-            listings.push({
-              id: Number(id),
-              seller: '0x...',
-              creditId: Number(id),
-              amount: BigInt(1000),
-              pricePerUnit: BigInt(5 * 10 ** 18),
-              active: true
-            })
-          } catch (e) {}
-        }
-        setActiveListings(listings)
-      }
-      fetchListings()
-    }
+    // allListingsData available for future contract integration
+    void allListingsData
   }, [allListingsData])
 
   const handleBuy = async (listingId: number, amount: string) => {
