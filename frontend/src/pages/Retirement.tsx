@@ -48,8 +48,8 @@ export default function Retirement() {
 
       <div className="glass-card p-8">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
-            <Leaf className="w-6 h-6 text-green-400" />
+          <div className="w-12 h-12 bg-base-blue/20 border border-base-blue/30 rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(0,82,255,0.2)]">
+            <Leaf className="w-6 h-6 text-base-blue" />
           </div>
           <div>
             <h2 className="text-xl font-semibold text-white">New Retirement</h2>
@@ -105,8 +105,8 @@ export default function Retirement() {
           </button>
 
           {retired && (
-            <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 animate-pulse">
-              <div className="flex items-center gap-2 text-green-400">
+            <div className="bg-neon-green/10 border border-neon-green/30 rounded-xl p-4 animate-pulse shadow-[0_0_20px_rgba(0,255,102,0.15)]">
+              <div className="flex items-center gap-2 text-neon-green">
                 <CheckCircle size={20} />
                 <span className="font-semibold">Credits Retired Successfully!</span>
               </div>
@@ -120,7 +120,7 @@ export default function Retirement() {
 
       <div className="glass-card p-6">
         <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-          <Award className="w-5 h-5 text-green-400" />
+          <Award className="w-5 h-5 text-base-blue" />
           Your Retirement History
         </h3>
 
@@ -129,7 +129,7 @@ export default function Retirement() {
             {mockRetirementHistory.map((retirement) => (
               <div
                 key={retirement.id}
-                className="bg-white/5 rounded-lg p-4 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                className="bg-base-surface/50 border border-base-border hover:border-base-blue/30 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-colors"
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
@@ -168,16 +168,16 @@ export default function Retirement() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="glass-card p-4 text-center">
-          <div className="text-2xl font-bold text-green-400">2.6</div>
+        <div className="glass-card p-4 text-center hover:-translate-y-1 transition-all duration-300">
+          <div className="text-2xl font-bold text-base-blue drop-shadow-[0_0_8px_rgba(0,82,255,0.4)]">2.6</div>
           <div className="text-white/60 text-sm">Total Retired (tonnes)</div>
         </div>
-        <div className="glass-card p-4 text-center">
-          <div className="text-2xl font-bold text-green-400">2</div>
+        <div className="glass-card p-4 text-center hover:-translate-y-1 transition-all duration-300">
+          <div className="text-2xl font-bold text-base-blue drop-shadow-[0_0_8px_rgba(0,82,255,0.4)]">2</div>
           <div className="text-white/60 text-sm">Retirement Events</div>
         </div>
-        <div className="glass-card p-4 text-center">
-          <div className="text-2xl font-bold text-green-400">$0.002</div>
+        <div className="glass-card p-4 text-center hover:-translate-y-1 transition-all duration-300">
+          <div className="text-2xl font-bold text-base-blue drop-shadow-[0_0_8px_rgba(0,82,255,0.4)]">$0.002</div>
           <div className="text-white/60 text-sm">Total Gas Spent</div>
         </div>
       </div>

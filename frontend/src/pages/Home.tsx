@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Zap, Clock, Leaf, Shield, Globe, TrendingUp } from 'lucide-react'
+import { Zap, Clock, Leaf, Shield, Globe, TrendingUp, TreePine } from 'lucide-react'
 
 function StatCard({ icon: Icon, value, label, suffix = '' }: { icon: any, value: number, label: string, suffix?: string }) {
   const [count, setCount] = useState(0)
@@ -24,8 +24,8 @@ function StatCard({ icon: Icon, value, label, suffix = '' }: { icon: any, value:
   }, [value])
   
   return (
-    <div className="glass-card p-6 text-center">
-      <Icon className="w-8 h-8 text-green-400 mx-auto mb-3" />
+    <div className="glass-card p-6 text-center hover:-translate-y-1 transition-all duration-300">
+      <Icon className="w-8 h-8 text-base-blue mx-auto mb-3" />
       <div className="text-3xl font-bold text-white mb-1">
         {count.toLocaleString()}{suffix}
       </div>
@@ -36,9 +36,9 @@ function StatCard({ icon: Icon, value, label, suffix = '' }: { icon: any, value:
 
 function FeatureCard({ icon: Icon, title, description }: { icon: any, title: string, description: string }) {
   return (
-    <div className="glass-card p-6 hover:bg-white/15 transition-all">
-      <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
-        <Icon className="w-6 h-6 text-green-400" />
+    <div className="glass-card p-6 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,82,255,0.15)] transition-all duration-300 group">
+      <div className="w-12 h-12 bg-base-blue/20 rounded-xl flex items-center justify-center mb-4 border border-base-blue/30 group-hover:border-neon-green/50 transition-colors">
+        <Icon className="w-6 h-6 text-base-blue group-hover:text-neon-green transition-colors" />
       </div>
       <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
       <p className="text-white/70 text-sm leading-relaxed">{description}</p>
@@ -49,14 +49,15 @@ function FeatureCard({ icon: Icon, title, description }: { icon: any, title: str
 export default function Home() {
   return (
     <div className="space-y-16">
-      <section className="text-center py-12">
-        <div className="animate-float mb-8">
-          <div className="w-32 h-32 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full mx-auto flex items-center justify-center shadow-2xl">
-            <Leaf className="w-16 h-16 text-white" />
+      <section className="text-center py-20 animate-fade-in-up">
+        <div className="animate-float mb-10">
+          <div className="w-32 h-32 bg-gradient-to-br from-base-blue to-blue-700 rounded-full mx-auto flex items-center justify-center shadow-[0_0_40px_rgba(0,82,255,0.4)] border border-white/10 relative">
+            <div className="absolute inset-0 rounded-full animate-pulse-glow"></div>
+            <TreePine className="w-16 h-16 text-white relative z-10" />
           </div>
         </div>
         
-        <h1 className="text-5xl md:text-6xl font-bold mb-6">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
           <span className="text-gradient">TheBaseTree</span>
         </h1>
         
@@ -134,15 +135,15 @@ export default function Home() {
             </p>
             <div className="flex gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-400">$0.001</div>
+                <div className="text-2xl font-bold text-base-blue">~$0.001</div>
                 <div className="text-sm text-white/60">Gas per transaction</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-400">0.001</div>
+                <div className="text-2xl font-bold text-neon-green">0.001</div>
                 <div className="text-sm text-white/60">Minimum credit unit</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-400">12+ hrs</div>
+                <div className="text-2xl font-bold text-base-blue">12+ hrs</div>
                 <div className="text-sm text-white/60">Time saved vs trad markets</div>
               </div>
             </div>

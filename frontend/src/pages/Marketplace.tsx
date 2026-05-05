@@ -31,7 +31,7 @@ function ListingCard({ listing, metadata, onBuy }: {
   const totalPrice = listing.pricePerUnit * BigInt(buyAmount || 0) / BigInt(10 ** 18)
   
   return (
-    <div className="glass-card p-5 hover:bg-white/15 transition-all">
+    <div className="glass-card p-5 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(0,82,255,0.15)] transition-all duration-300 group cursor-pointer border border-base-border hover:border-base-blue/30">
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3 className="text-lg font-semibold text-white">
@@ -43,7 +43,7 @@ function ListingCard({ listing, metadata, onBuy }: {
           </div>
         </div>
         <div className="text-right">
-          <div className="text-green-400 font-bold">
+          <div className="text-neon-green font-bold text-xl drop-shadow-[0_0_8px_rgba(0,255,102,0.3)] group-hover:drop-shadow-[0_0_12px_rgba(0,255,102,0.6)] transition-all">
             ${(Number(listing.pricePerUnit) / 1e18).toFixed(2)}
           </div>
           <div className="text-white/50 text-sm">per tonne</div>
@@ -64,7 +64,7 @@ function ListingCard({ listing, metadata, onBuy }: {
           <span>{Number(listing.amount).toLocaleString()} tonnes available</span>
         </div>
         <div className="flex items-center gap-2 text-white/70">
-          <span className="text-xs bg-green-500/20 px-2 py-1 rounded">
+          <span className="text-xs bg-base-blue/20 text-base-blue border border-base-blue/30 px-2 py-1 rounded font-medium">
             {metadata?.registry || 'Verra'}
           </span>
         </div>
@@ -212,9 +212,9 @@ export default function Marketplace() {
       </div>
 
       {!isConnected && (
-        <div className="glass-card p-8 text-center">
+        <div className="glass-card p-8 text-center border border-base-blue/20 bg-base-blue/5">
           <p className="text-white/70 mb-4">Connect your wallet to start trading green credits</p>
-          <div className="inline-block animate-pulse bg-green-500/20 px-4 py-2 rounded-lg text-green-400">
+          <div className="inline-block animate-pulse bg-base-blue/20 px-4 py-2 rounded-xl text-base-blue border border-base-blue/30 font-medium shadow-[0_0_15px_rgba(0,82,255,0.2)]">
             Connect wallet above ↑
           </div>
         </div>
@@ -241,27 +241,27 @@ export default function Marketplace() {
       <div className="glass-card p-6">
         <h3 className="text-lg font-semibold text-white mb-3">How It Works</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
-          <div className="text-center">
-            <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-              <span className="text-green-400 font-bold">1</span>
+          <div className="text-center group">
+            <div className="w-10 h-10 bg-base-blue/20 border border-base-blue/30 rounded-full flex items-center justify-center mx-auto mb-2 shadow-[0_0_15px_rgba(0,82,255,0.2)] group-hover:bg-base-blue/30 transition-colors">
+              <span className="text-base-blue font-bold">1</span>
             </div>
             <p className="text-white/70">Browse verified green projects</p>
           </div>
-          <div className="text-center">
-            <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-              <span className="text-green-400 font-bold">2</span>
+          <div className="text-center group">
+            <div className="w-10 h-10 bg-base-blue/20 border border-base-blue/30 rounded-full flex items-center justify-center mx-auto mb-2 shadow-[0_0_15px_rgba(0,82,255,0.2)] group-hover:bg-base-blue/30 transition-colors">
+              <span className="text-base-blue font-bold">2</span>
             </div>
             <p className="text-white/70">Select amount (as low as 0.001 tonnes)</p>
           </div>
-          <div className="text-center">
-            <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-              <span className="text-green-400 font-bold">3</span>
+          <div className="text-center group">
+            <div className="w-10 h-10 bg-base-blue/20 border border-base-blue/30 rounded-full flex items-center justify-center mx-auto mb-2 shadow-[0_0_15px_rgba(0,82,255,0.2)] group-hover:bg-base-blue/30 transition-colors">
+              <span className="text-base-blue font-bold">3</span>
             </div>
             <p className="text-white/70">Buy with sub-cent gas fees</p>
           </div>
-          <div className="text-center">
-            <div className="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
-              <span className="text-green-400 font-bold">4</span>
+          <div className="text-center group">
+            <div className="w-10 h-10 bg-base-blue/20 border border-base-blue/30 rounded-full flex items-center justify-center mx-auto mb-2 shadow-[0_0_15px_rgba(0,82,255,0.2)] group-hover:bg-base-blue/30 transition-colors">
+              <span className="text-base-blue font-bold">4</span>
             </div>
             <p className="text-white/70">Receive on-chain proof of retirement</p>
           </div>
